@@ -1,3 +1,4 @@
+<img width="947" height="472" alt="Screenshot 2026-10-09 133222" src="https://github.com/user-attachments/assets/74692c0c-a452-4892-9289-53c0331b8ae3" />
 # 📝 Blog Post App
 
 A responsive Blog Post Application built with **React, TypeScript, Vite, and Tailwind CSS**. The application fetches blog posts from a REST API, validates the response at runtime using Zod, and displays posts with loading and error states.
