@@ -117,17 +117,16 @@ blog-post-app/
 ├── src/
 │   ├── components/
 │   │   └── BlogPost.tsx
-│   ├── types/
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── index.css
+├── util/
+│   │   └── http.ts
 ├── index.html
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
 ```
-
-*The structure above is illustrative; adjust it to match your actual project files.*
 
 ## 🧠 What I Learned
 
