@@ -28,27 +28,25 @@ function App() {
     async function fetchPosts() {
       setIsFetching(true);
       try {
-        const data = await get("https://jsonplaceholder.typicode.com/posts");
-        const parsedData = expectedResponseDataSchema.parse(data);
-        // No more type casting via "as" needed!
-        // Instead, here, TypeScript "knows" that parsedData will be an array
-        // full with objects as defined by the above schema
-        const blogPosts: BlogPosts[] = parsedData.map((rawPost) => {
-          return {
-            id: rawPost.id,
-            title: rawPost.title,
-            text: rawPost.body,
-          };
-        });
-        setFetchedPost(blogPosts);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        }
-        // setError('Failed to fetch posts!');
-      }
+        const data = await get(
+          "https://jsonplaceholder.typicode.com/posts",
+          z.array(rawDataBlogPostSchema),
+        );
+        //get send the validated data with ZOD library
+        const blogPosts: BlogPosts[] = data.map((rawPost) => ({
+          id: rawPost.id,
+          title: rawPost.title,
+          text: rawPost.body,
+        }));
 
-      setIsFetching(false);
+        setFetchedPost(blogPosts);
+      } catch (error: unknown) {
+        setError(
+          error instanceof Error ? error.message : "Failed to fetch posts.",
+        );
+      } finally {
+        setIsFetching(false);
+      }
     }
 
     fetchPosts();
